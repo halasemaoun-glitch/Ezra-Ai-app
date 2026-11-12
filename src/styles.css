@@ -1,0 +1,259 @@
+/*
+ * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
+ * Keep every @import in this top block. Web fonts load via <link> in src/routes/__root.tsx.
+ */
+@import "tailwindcss" source(none);
+@source "../src";
+@source "../node_modules/streamdown/dist/*.js";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * EZRA design system — deep black, burgundy & wine surfaces, glowing pinks,
+ * violet light, warm ivory text. The app is always dark; :root holds the palette.
+ */
+
+@theme inline {
+  --font-sans: "IBM Plex Sans Arabic", "Manrope", system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", "Amiri", serif;
+  --font-arabic-display: "Amiri", "Cormorant Garamond", serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* EZRA brand tokens */
+  --color-ivory: var(--ivory);
+  --color-wine: var(--wine);
+  --color-burgundy: var(--burgundy);
+  --color-rose: var(--rose);
+  --color-rose-soft: var(--rose-soft);
+  --color-violet: var(--violet);
+  --color-online: var(--online);
+  --color-chat-user: var(--chat-user);
+  --color-chat-user-foreground: var(--chat-user-foreground);
+  --color-google: var(--google-bg);
+  --color-google-border: var(--google-border);
+  --color-google-foreground: var(--google-foreground);
+}
+
+:root {
+  --radius: 1rem;
+
+  --background: oklch(0.075 0.006 350);
+  --foreground: oklch(0.95 0.022 85);
+  --card: oklch(0.14 0.035 8);
+  --card-foreground: oklch(0.95 0.022 85);
+  --popover: oklch(0.13 0.03 8);
+  --popover-foreground: oklch(0.95 0.022 85);
+  --primary: oklch(0.6 0.2 358);
+  --primary-foreground: oklch(0.98 0.012 85);
+  --secondary: oklch(0.2 0.055 10);
+  --secondary-foreground: oklch(0.95 0.022 85);
+  --muted: oklch(0.16 0.025 8);
+  --muted-foreground: oklch(0.74 0.012 340);
+  --accent: oklch(0.24 0.07 355);
+  --accent-foreground: oklch(0.88 0.07 355);
+  --destructive: oklch(0.62 0.21 25);
+  --destructive-foreground: oklch(0.98 0.01 85);
+  --border: oklch(0.36 0.06 5 / 45%);
+  --input: oklch(0.36 0.06 5 / 55%);
+  --ring: oklch(0.66 0.2 358);
+  --chart-1: oklch(0.6 0.2 358);
+  --chart-2: oklch(0.55 0.2 300);
+  --chart-3: oklch(0.45 0.15 15);
+  --chart-4: oklch(0.8 0.09 355);
+  --chart-5: oklch(0.7 0.14 320);
+  --sidebar: oklch(0.1 0.02 8);
+  --sidebar-foreground: oklch(0.95 0.022 85);
+  --sidebar-primary: oklch(0.6 0.2 358);
+  --sidebar-primary-foreground: oklch(0.98 0.012 85);
+  --sidebar-accent: oklch(0.2 0.055 10);
+  --sidebar-accent-foreground: oklch(0.95 0.022 85);
+  --sidebar-border: oklch(0.36 0.06 5 / 45%);
+  --sidebar-ring: oklch(0.66 0.2 358);
+
+  --ivory: oklch(0.95 0.022 85);
+  --wine: oklch(0.24 0.08 12);
+  --burgundy: oklch(0.42 0.14 12);
+  --rose: oklch(0.66 0.2 358);
+  --rose-soft: oklch(0.84 0.08 355);
+  --violet: oklch(0.55 0.21 300);
+  --online: oklch(0.78 0.14 160);
+  --chat-user: oklch(0.3 0.095 6);
+  --chat-user-foreground: oklch(0.97 0.018 85);
+
+  --google-bg: oklch(0.17 0.003 286);
+  --google-border: oklch(0.63 0.006 150);
+  --google-foreground: oklch(0.91 0.004 150);
+
+  --gradient-surface: linear-gradient(160deg, oklch(0.17 0.045 10 / 92%), oklch(0.1 0.02 350 / 92%));
+  --gradient-wine: linear-gradient(135deg, oklch(0.36 0.12 10), oklch(0.22 0.08 352));
+  --gradient-mic: radial-gradient(circle at 35% 30%, oklch(0.72 0.19 358), oklch(0.45 0.17 8) 55%, oklch(0.25 0.09 355) 100%);
+  --gradient-aura: radial-gradient(circle at 50% 50%, oklch(0.55 0.21 355 / 38%), oklch(0.5 0.2 300 / 18%) 45%, transparent 70%);
+  --shadow-glow: 0 0 40px -6px oklch(0.6 0.2 358 / 55%), 0 0 90px -20px oklch(0.55 0.21 300 / 45%);
+  --shadow-card: 0 18px 50px -24px oklch(0.4 0.14 10 / 70%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    background-color: var(--color-background);
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    background: oklch(0.6 0.2 358 / 40%);
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+}
+
+@utility font-arabic-display {
+  font-family: var(--font-arabic-display);
+}
+
+@utility surface-luxe {
+  background: var(--gradient-surface);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+}
+
+@utility bg-wine-gradient {
+  background: var(--gradient-wine);
+}
+
+@utility bg-mic {
+  background: var(--gradient-mic);
+}
+
+@utility bg-aura {
+  background: var(--gradient-aura);
+}
+
+@utility shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@utility text-glow {
+  text-shadow: 0 0 24px oklch(0.6 0.2 358 / 55%);
+}
+
+@utility logo-ezra {
+  font-family: var(--font-display);
+  letter-spacing: 0.32em;
+  background: linear-gradient(180deg, oklch(0.62 0.17 12), oklch(0.4 0.14 10));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Motion ---------- */
+@keyframes orb-breathe {
+  0%, 100% { transform: scale(calc(1 + var(--level, 0) * 0.08)); }
+  50% { transform: scale(calc(1.025 + var(--level, 0) * 0.08)); }
+}
+@keyframes orb-spin {
+  to { rotate: 360deg; }
+}
+@keyframes aura-pulse {
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+@keyframes ring-out {
+  0% { transform: scale(0.82); opacity: 0.75; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+@keyframes ring-in {
+  0% { transform: scale(1.35); opacity: 0; }
+  60% { opacity: 0.55; }
+  100% { transform: scale(0.9); opacity: 0; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes status-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@utility animate-orb-breathe {
+  animation: orb-breathe 6s ease-in-out infinite;
+}
+@utility animate-orb-spin {
+  animation: orb-spin var(--spin, 80s) linear infinite;
+}
+@utility animate-aura {
+  animation: aura-pulse var(--pulse, 5s) ease-in-out infinite;
+}
+@utility animate-ring-out {
+  animation: ring-out 2.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+}
+@utility animate-ring-in {
+  animation: ring-in 2.2s ease-in infinite;
+}
+@utility animate-fade-up {
+  animation: fade-up 0.5s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+@utility animate-status-blink {
+  animation: status-blink 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
