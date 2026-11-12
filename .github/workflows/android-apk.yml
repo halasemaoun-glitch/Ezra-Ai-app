@@ -26,8 +26,13 @@ jobs:
           distribution: temurin
           java-version: 21
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
+      # GitHub-hosted Ubuntu runners already include the Android SDK.
+      # Avoid setup-android's deprecated "tools" package installation.
+      - name: Verify Android SDK
+        run: |
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          test -d "$ANDROID_HOME"
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --version || true
 
       - name: Install app and Capacitor dependencies
         run: npm install --no-save --legacy-peer-deps @capacitor/core@8.6.0 @capacitor/cli@8.6.0 @capacitor/android@8.6.0
