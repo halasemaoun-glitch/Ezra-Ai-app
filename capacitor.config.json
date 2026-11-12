@@ -1,0 +1,12 @@
+{
+  "appId": "com.ezra.ai",
+  "appName": "EZRA AI",
+  "webDir": "dist",
+  "server": {
+    "url": "https://magic-maker-app-lab.lovable.app",
+    "cleartext": false,
+    "allowNavigation": [
+      "magic-maker-app-lab.lovable.app"
+    ]
+  }
+}
