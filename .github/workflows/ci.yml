@@ -19,12 +19,14 @@ jobs:
     name: Install, lint, test and build
     runs-on: ubuntu-latest
     env:
-      SUPABASE_PROJECT_ID: ci-placeholder
-      SUPABASE_PUBLISHABLE_KEY: ci-placeholder
-      SUPABASE_URL: https://example.supabase.co
-      VITE_SUPABASE_PROJECT_ID: ci-placeholder
-      VITE_SUPABASE_PUBLISHABLE_KEY: ci-placeholder
-      VITE_SUPABASE_URL: https://example.supabase.co
+      # Public Supabase configuration. Set these as repository Actions secrets.
+      # Fallbacks keep lint/tests/build runnable before secrets are configured.
+      SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID || 'ci-placeholder' }}
+      SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY || 'ci-placeholder' }}
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL || 'https://example.supabase.co' }}
+      VITE_SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID || 'ci-placeholder' }}
+      VITE_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY || 'ci-placeholder' }}
+      VITE_SUPABASE_URL: ${{ secrets.SUPABASE_URL || 'https://example.supabase.co' }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
